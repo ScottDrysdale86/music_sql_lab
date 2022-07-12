@@ -26,3 +26,13 @@ def find_artist_by_id(id):
         result = results[0]
         artist = Artist(result["name"], result["id"])
     return artist
+
+
+def list_all_artists():
+    artists = []
+    sql = "SELECT * FROM artists"
+    results = run_sql(sql)
+    for row in results:
+        artist = Artist(row['name'], row['id'])
+        artists.append(artist)
+    return artists
