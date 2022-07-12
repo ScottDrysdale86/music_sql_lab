@@ -15,8 +15,10 @@ album_repository.save(album1)
 
 # artist_repository.delete_all()
 
-result = artist_repository.find_artist_by_id(1)
-print(result.name)
+# result = artist_repository.find_artist_by_id(1)
+# print(result.name)
 
+result = album_repository.find_album_by_id(1)
+print(result.title)
 
 pdb.set_trace()

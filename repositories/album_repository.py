@@ -4,6 +4,7 @@ from models.album import Album
 import repositories.artist_repository as artist_repository
 
 
+
 def save(album):
     sql = "INSERT INTO albums(title, genre, artist_id) VALUES (%s, %s, %s) RETURNING *"
     values = [album.title, album.genre, album.artist.id]
@@ -15,3 +16,14 @@ def save(album):
 def delete_all():
     sql = 'DELETE FROM albums'
     run_sql(sql)
+
+def find_album_by_id(id):
+    album = None
+    sql = "SELECT * FROM albums WHERE id = %s"
+    values = [id]
+    results = run_sql(sql, values)
+    if results:
+        result = results[0]
+        artist = artist_repository.find_artist_by_id(result['id'])
+        album = Album(result["title"], result["genre"], artist, result["id"])
+    return album
