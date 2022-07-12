@@ -36,3 +36,8 @@ def list_all_artists():
         artist = Artist(row['name'], row['id'])
         artists.append(artist)
     return artists
+
+def delete_artist(id):
+    sql = "DELETE FROM artists WHERE id = %s"
+    values = [id] 
+    run_sql(sql, values)

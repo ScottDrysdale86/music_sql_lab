@@ -38,3 +38,20 @@ def list_all_albums():
 
         albums.append(album)
     return albums
+
+def list_albums_by_artist(artist):
+    albums = []
+    sql = "SELECT * FROM albums WHERE artist_id = %s"
+    values = [artist.id]
+
+    results = run_sql(sql,values)
+    for row in results:
+        album = Album(row["title"], row["genre"], artist, row["id"])
+        albums.append(album)
+    return albums
+
+
+def delete_album(id):
+    sql = "DELETE FROM albums WHERE id = %s"
+    values = [id] 
+    run_sql(sql, values)
