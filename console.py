@@ -10,7 +10,7 @@ artist1 = Artist("Oasis")
 artist_repository.save(artist1)
 artist2 = Artist("The Stone Roses")
 artist_repository.save(artist2)
-artist3 = Artist("Radiohead")
+artist3 = Artist("Radiohea")
 artist_repository.save(artist3)
 
 
@@ -32,10 +32,10 @@ album_repository.save(album4)
 # result = album_repository.find_album_by_id(1)
 # print(result.title)
 
-# result = artist_repository.list_all_artists()
+result = artist_repository.list_all_artists()
 
-# for artist in result:
-#     print(artist.name)
+for artist in result:
+    print(artist.name)
 
 
 # result = album_repository.list_all_albums()
@@ -48,6 +48,21 @@ album_repository.save(album4)
 
 # artist_repository.delete_artist(2)
 
-album_repository.delete_album(2)
+# album_repository.delete_album(2)
+artist1.name = "Boasis"
+artist_repository.edit_artist(artist1)
+
+album1.genre = "Brit Pop"
+album_repository.edit_album(album1)
+
+result = artist_repository.list_all_artists()
+
+for artist in result:
+    print(artist.name)
+
+result = album_repository.list_all_albums()
+
+for album in result:
+    print(album.genre)
 
 pdb.set_trace()
